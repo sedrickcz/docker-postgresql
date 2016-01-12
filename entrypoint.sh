@@ -1,4 +1,9 @@
 #!/bin/bash
+
+lighttpd-enable-mod fastcgi fastcgi-php
+service ssh start
+service lighttpd start
+
 set -e
 source ${PG_APP_HOME}/functions
 
@@ -32,4 +37,3 @@ if [[ -z ${1} ]]; then
 else
   exec "$@"
 fi
-
