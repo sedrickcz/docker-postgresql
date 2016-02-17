@@ -35,6 +35,6 @@ RUN chmod 600 ~/.ssh/authorized_keys
 
 EXPOSE 80 22 443
 
-VOLUME ["${PG_HOME}", "${PG_RUNDIR}", "/var/www"]
+VOLUME ["${PG_HOME}", "${PG_RUNDIR}", "/var/www", "/etc/lighttpd"]
 WORKDIR ${PG_HOME}
 ENTRYPOINT ["/sbin/entrypoint.sh"]
