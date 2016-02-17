@@ -33,7 +33,7 @@ ADD authorized_keys .
 RUN cp authorized_keys ~/.ssh
 RUN chmod 600 ~/.ssh/authorized_keys
 
-EXPOSE 80 22
+EXPOSE 80 22 443
 
 VOLUME ["${PG_HOME}", "${PG_RUNDIR}", "/var/www"]
 WORKDIR ${PG_HOME}
