@@ -16,7 +16,7 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y acl \
-      postgresql-${PG_VERSION} postgresql-client-${PG_VERSION} postgresql-contrib-${PG_VERSION} nginx php5-fpm php5-pgsql openssh-server \
+      postgresql-${PG_VERSION} postgresql-client-${PG_VERSION} postgresql-contrib-${PG_VERSION} nano nginx php5-fpm php5-pgsql openssh-server \
  && ln -sf ${PG_DATADIR}/postgresql.conf /etc/postgresql/${PG_VERSION}/main/postgresql.conf \
  && ln -sf ${PG_DATADIR}/pg_hba.conf /etc/postgresql/${PG_VERSION}/main/pg_hba.conf \
  && ln -sf ${PG_DATADIR}/pg_ident.conf /etc/postgresql/${PG_VERSION}/main/pg_ident.conf \
@@ -35,6 +35,6 @@ RUN chmod 600 ~/.ssh/authorized_keys
 
 EXPOSE 80 22 443
 
-VOLUME ["${PG_HOME}", "${PG_RUNDIR}", "/var/www"]
+VOLUME ["${PG_HOME}", "${PG_RUNDIR}", "/usr/share/nginx/html", "/etc/nginx", "/etc/php5"]
 WORKDIR ${PG_HOME}
 ENTRYPOINT ["/sbin/entrypoint.sh"]
