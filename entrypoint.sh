@@ -1,6 +1,8 @@
 #!/bin/bash
 
 service ssh start
+service nginx start
+service php5-fpm start
 
 set -e
 source ${PG_APP_HOME}/functions
